@@ -1,0 +1,10 @@
+# Ignoruojami aplankai
+node_modules
+cypress/screenshots
+cypress/videos
+cypress/reports
+
+# Ignoruojami failai
+*.log
+.DS_Store
+.env
