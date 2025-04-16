@@ -1,35 +1,37 @@
 
 # 🔐 RTi Auto Locksmith – Cypress Test Suite
 
-Šis projektas yra **End-to-End (E2E)** testų rinkinys svetainei [rtiautolocksmith.co.uk](https://rtiautolocksmith.co.uk), sukurtas naudojant [Cypress](https://www.cypress.io/). Testai apima navigaciją, formų validacijas, i18n lokalizaciją, responsive elgseną, SEO atributus ir edge atvejus.
+This project is an **End-to-End (E2E)** test suite for the website [rtiautolocksmith.co.uk](https://rtiautolocksmith.co.uk), built using [Cypress](https://www.cypress.io/). It covers navigation, form validation, i18n localization, responsive layout behavior, SEO attributes, and edge cases.
 
 ---
 
-## 📦 Naudojamos technologijos
+## 📦 Technologies Used
 
 - ✅ Cypress 12+
-- ✅ Mochawesome reporteris (JSON ataskaitoms)
+- ✅ Mochawesome reporter (for JSON test reports)
 - ✅ GitHub Actions (CI/CD)
-- ✅ Jira (per CSV arba Xray API)
+- ✅ Jira (for test case registration and tracking)
+
+> All test cases are registered manually in the **Jira** system under the project `rti_web_test`. Test progress is tracked using Backlog and Sprints.
 
 ---
 
-## 🚀 Kaip paleisti testus lokaliai
+## 🚀 How to Run Tests Locally
 
 ```bash
-# 1. Įsidiek priklausomybes
+# 1. Install dependencies
 npm install
 
-# 2. Paleisk Cypress UI režimu
+# 2. Run Cypress in interactive mode
 npx cypress open
 
-# 3. Paleisk visus testus headless režimu
+# 3. Run all tests in headless mode
 npx cypress run --reporter mochawesome
 ```
 
 ---
 
-## 📁 Testų struktūra
+## 📁 Test Structure
 
 ```
 cypress/
@@ -43,16 +45,16 @@ cypress/
 ├── support/
 │   └── commands.js
 ├── reports/
-│   └── mochawesome.json (sugeneruota automatiškai)
+│   └── mochawesome.json (automatically generated)
 ```
 
 ---
 
 ## 🔁 GitHub Actions CI
 
-Testai paleidžiami automatiškai kiekvieno `push` metu į `main` ar `test` šaką.
+Tests run automatically on every push to the `main` or `test` branch.
 
-### `.github/workflows/cypress.yml` (failas bus sukurtas)
+### `.github/workflows/cypress.yml` (example workflow)
 
 ```yaml
 name: Cypress Tests
@@ -90,21 +92,8 @@ jobs:
 
 ---
 
-## 📤 Testų ataskaitų siuntimas į Jira (Xray)
-
-1. Gauk Jira API token  
-2. Paleisk rankinį importą:
-```bash
-curl -H "Content-Type: multipart/form-data" \
-  -H "Authorization: Bearer <JIRA_API_TOKEN>" \
-  -F "file=@cypress/reports/mochawesome.json" \
-  https://xray.cloud.getxray.app/api/v2/import/execution/mochawesome
-```
-
----
-
-## 👩‍💻 Autorius
+## 👩‍💻 Author
 
 Kristina Masiulytė Tomkienė  
-Projektas: [RTi Auto Locksmith UK](https://rtiautolocksmith.co.uk)  
-Testai: Cypress + Jira + GitHub Actions
+Project: [RTi Auto Locksmith UK](https://rtiautolocksmith.co.uk)  
+Testing: Cypress + GitHub Actions + Jira (manual registration)
